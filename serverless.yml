@@ -11,7 +11,8 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:GetItem
-      Resource: "arn:aws:dynamodb:us-east-1:223192804088:table/dev-shortend-urls"
+        - dynamodb:PutItem
+      Resource: "arn:aws:dynamodb:us-east-1:223192804088:table/dev-shortened-urls"
       
 functions:
   main:
@@ -47,4 +48,4 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 2
           WriteCapacityUnits: 2
-        TableName: "${opt:stage, self:provider.stage}-shortend-urls"
+        TableName: "${opt:stage, self:provider.stage}-shortened-urls"
